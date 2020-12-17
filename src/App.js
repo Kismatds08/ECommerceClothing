@@ -3,6 +3,9 @@ import {Switch, Route} from 'react-router-dom'
 import Header from "./components/header/header.component";
 import ShopPage from "./pages/shop/shop.component";
 
+import './App.scss';
+import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+
 function App() {
   return (
     <div>
@@ -10,6 +13,7 @@ function App() {
        <Switch>
       < Route exact path='/' component={HomePage}/>
       < Route exact path='/shop' component={ShopPage}/>
+      < Route exact path='/signin' component={SignInAndSignUpPage}/>
     </Switch>
     </div> 
   );
