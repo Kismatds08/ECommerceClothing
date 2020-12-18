@@ -19,6 +19,13 @@ export const auth= firebase.auth();
 // Assigning your firebase firestore library
 export const firestore= firebase.firestore();
 
+/**const createUserProfileDocument = (userAuth, additionalData)=>{
+    const userRef = firestore.collection(`users/${userAuth.uid}`)
+
+    const snapshot = await userRef.get()
+}
+createUserProfileDocument()*/
+
 //Creating a new object from your authentication library for GoogleAuth Provider
 const provider = new firebase.auth.GoogleAuthProvider()
 
