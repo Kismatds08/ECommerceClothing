@@ -19,12 +19,30 @@ export const auth= firebase.auth();
 // Assigning your firebase firestore library
 export const firestore= firebase.firestore();
 
-/**const createUserProfileDocument = (userAuth, additionalData)=>{
-    const userRef = firestore.collection(`users/${userAuth.uid}`)
+//Create doc insile firestore by capturing user object from authentication library
+export const createUserProfileDocument = async(user, displayName)=>{
+    if(!user) return
 
-    const snapshot = await userRef.get()
+    const userRef = firestore.doc(`users/${user.uid}`)
+
+    const snapShot = await userRef.get()
+    console.log(snapShot)
+    if(!snapShot.exists){
+        const {email} = user
+        const createdAt = new Date()
+    try{
+        await userRef.set({
+            displayName,
+            email,
+            createdAt
+        })
+} catch(error){
+    console.log ("Error", error.message)
+        }
+    }
+    return userRef
 }
-createUserProfileDocument()*/
+createUserProfileDocument()
 
 //Creating a new object from your authentication library for GoogleAuth Provider
 const provider = new firebase.auth.GoogleAuthProvider()
